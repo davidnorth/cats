@@ -1,0 +1,22 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  grid-gap: 1rem;
+}
+@media (max-width: 1000px) { 
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+.grid > div {
+  display: grid;
+  position: relative;
+}
+.grid > div::before {
+  content: "";
+  padding-bottom: 100%;
+  display: block;
+}
+.grid > div > img {
+  position: absolute;
+}

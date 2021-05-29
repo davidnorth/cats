@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import Cat from '../components/Cat'
 import {getCats} from '../lib/cat-api'
-
+import { Link } from "react-router-dom"
+import './Home.css'
 
 function Home() {  
   
@@ -17,10 +18,12 @@ function Home() {
   
   return (
     <div>
-        Home
-        {cats.map((cat:Cat) => (
-          <Cat key={cat.id} cat={cat} />
-        ))}
+        <Link to="/upload">Upload a cat</Link>
+        <div className="grid">
+          {cats.map((cat:Cat) => (
+            <Cat key={cat.id} cat={cat} />
+          ))}
+        </div>
     </div>
   );
 }

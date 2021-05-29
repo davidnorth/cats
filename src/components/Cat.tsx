@@ -1,13 +1,15 @@
 import React from 'react'
+import './Cat.css'
 
 interface CatProps {
   cat: Cat
 }
 
 function Cat({cat}:CatProps) {  
+
   return (
-    <div>
-        <img src={cat.url} />
+    <div className="cat">
+      <img src={cat.url} alt="" />
     </div>
   );
 }

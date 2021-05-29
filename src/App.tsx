@@ -18,11 +18,9 @@ function App() {
 
 
       <header className="App-header">
-        <img alt="Rate my cats!" src="/logo.png" id="logo" />
-         <nav>
-          <Link to="/upload">Upload a cat</Link>
-        </nav>
+        <Link to="/"><img alt="Rate my cats!" src="/logo.png" id="logo" /></Link>
       </header>
+
       <section id="main">
         <Switch>
           <Route path="/upload">
@@ -31,7 +29,7 @@ function App() {
           <Route path="/">
             <Home />
           </Route>
-        </Switch>        
+        </Switch> 
       </section>
 
     </div>
