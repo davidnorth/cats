@@ -18,28 +18,21 @@ function App() {
 
 
       <header className="App-header">
-
+        <img alt="Rate my cats!" src="/logo.png" id="logo" />
          <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/upload">Upload a cat</Link>
-            </li>
-          </ul>
+          <Link to="/upload">Upload a cat</Link>
         </nav>
-
       </header>
-
-      <Switch>
-        <Route path="/upload">
-          <Upload />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
+      <section id="main">
+        <Switch>
+          <Route path="/upload">
+            <Upload />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>        
+      </section>
 
     </div>
     </Router>

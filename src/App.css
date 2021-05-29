@@ -1,3 +1,33 @@
+body {
+  background: url("bg.jpg") center/50%;
+}
 .App {
   text-align: center;
+  margin: 2em 2em;
+  background: #eee;
+}
+
+header {
+  background: #fbc581;
+  padding: 0.7em 0.5em;
+}
+
+header h1 {
+  color: #fff;
+  font-size:4em;
+}
+section {
+  padding: 1em;
+}
+#logo {
+  width: 60%;
+}
+
+@media (max-width: 600px) { 
+  #logo {
+    width: 90%;
+  }
+  .App {
+    margin: 0;
+  }
 }
