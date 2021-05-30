@@ -1,23 +1,60 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import {makeFavourite} from '../lib/cat-api'
+import ClipLoader from "react-spinners/ClipLoader";
+import {makeFavourite, removeFavourite} from '../lib/cat-api'
 
 interface CatProps {
   cat: Cat
 }
 
+function renderHeart(filled:boolean) {
+  return filled ? <AiFillHeart /> : <AiOutlineHeart />
+}
+
 function Cat({cat}:CatProps) {  
+
+  const [favourited, setFavourited] = useState(!!cat.favourite)
+  const [favouriteId, setFavouriteId] = useState(cat.favourite && cat.favourite.id ? cat.favourite.id : '')
+  const [loading, setLoading] = useState(false)
 
   function toggleFavourite(e:React.SyntheticEvent) {
     e.preventDefault()
+    // TODO: error handling
+    setLoading(true)
+    if(favourited) {
+      removeFavourite(favouriteId)
+        .then((r) => {
+          console.log('removed favourite')
+          console.log(r)
+          setFavourited(false)
+          setFavouriteId('')
+          setLoading(false)
+        })
+        .catch((e) => {
+          console.log(e)
+          setLoading(false)
+        })
+    } else {
     makeFavourite(cat.id)
-      .then((r) => console.log(r))
-      .catch((e) => console.log(e))
+      .then((favouriteId:string) => {
+        console.log('added favourite')
+        console.log(favouriteId)
+        setFavourited(true)
+        setFavouriteId(favouriteId)
+        setLoading(false)
+      })
+      .catch((e) => {
+        console.log(e)
+        setLoading(false)
+      })
+    }
+
   }
 
   return (
     <span className="icon" onClick={toggleFavourite}>
-      {cat.favourite ? <AiFillHeart /> : <AiOutlineHeart />}
+      { loading ? null : renderHeart(favourited) }
+      <ClipLoader color='white' loading={loading} size={150} />
     </span>
   );
 }

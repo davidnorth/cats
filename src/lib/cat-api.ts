@@ -57,17 +57,18 @@ function uploadCat (file: File) {
     .send(formData)
 }
 
-function makeFavourite (id: string) {
-  console.log('make favourite ' + id)
+// Return promise of newly created Favourite id
+function makeFavourite (imageId: string) {
   return superagent
     .post(BASE_URL + '/favourites/')
     .set('X-API-Key', process.env.REACT_APP_API_KEY)
-    .send({image_id: id})
+    .send({image_id: imageId})
+    .then((res) => res.body.id)
 }
 
-function removeFavourite (id: string) {
+function removeFavourite (favouriteId: string) {
   return superagent
-    .post(BASE_URL + '/favourites/')
+    .delete(BASE_URL + '/favourites/' + favouriteId)
     .set('X-API-Key', process.env.REACT_APP_API_KEY)
 }   
 
