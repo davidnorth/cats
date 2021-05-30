@@ -7,3 +7,12 @@
   height: 100%;
   object-fit: cover;
 }
+
+.cat .icon {
+  display: block;
+  position: absolute;
+  color: #e81e63;
+  font-size: 30px;
+  right: 10px;
+  bottom: 10px;
+}

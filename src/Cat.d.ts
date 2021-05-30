@@ -1,4 +1,5 @@
 interface Cat {
   id: string,
-  url: string
+  url: string,
+  favourite: Favourite
 }

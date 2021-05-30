@@ -9,8 +9,8 @@ function Home() {
   const [cats, setCats] = useState([])
 
   useEffect(() => {
-    getCats().then((res) => {
-      setCats(res.body)
+    getCats().then((cats) => {
+      setCats(cats)
     })
   }, [])
 
