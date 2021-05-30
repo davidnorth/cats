@@ -1,5 +1,6 @@
 import React from 'react'
 import Favourite from './Favourite'
+import Votes from './Votes'
 import './Cat.css'
 
 interface CatProps {
@@ -11,6 +12,7 @@ function Cat({cat}:CatProps) {
     <div className="cat">
       <img src={cat.url} alt="" />
       <Favourite cat={cat} /> 
+      <Votes cat={cat} />
     </div>
   );
 }

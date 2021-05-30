@@ -11,8 +11,7 @@ function renderHeart(filled:boolean) {
   return filled ? <AiFillHeart /> : <AiOutlineHeart />
 }
 
-function Cat({cat}:CatProps) {  
-
+function Favourite({cat}:CatProps) {  
   const [favourited, setFavourited] = useState(!!cat.favourite)
   const [favouriteId, setFavouriteId] = useState(cat.favourite && cat.favourite.id ? cat.favourite.id : '')
   const [loading, setLoading] = useState(false)
@@ -24,8 +23,6 @@ function Cat({cat}:CatProps) {
     if(favourited) {
       removeFavourite(favouriteId)
         .then((r) => {
-          console.log('removed favourite')
-          console.log(r)
           setFavourited(false)
           setFavouriteId('')
           setLoading(false)
@@ -35,20 +32,17 @@ function Cat({cat}:CatProps) {
           setLoading(false)
         })
     } else {
-    makeFavourite(cat.id)
-      .then((favouriteId:string) => {
-        console.log('added favourite')
-        console.log(favouriteId)
-        setFavourited(true)
-        setFavouriteId(favouriteId)
-        setLoading(false)
-      })
-      .catch((e) => {
-        console.log(e)
-        setLoading(false)
-      })
+      makeFavourite(cat.id)
+        .then((favouriteId:string) => {
+          setFavourited(true)
+          setFavouriteId(favouriteId)
+          setLoading(false)
+        })
+        .catch((e) => {
+          console.log(e)
+          setLoading(false)
+        })
     }
-
   }
 
   return (
@@ -59,4 +53,4 @@ function Cat({cat}:CatProps) {
   );
 }
 
-export default Cat
+export default Favourite
