@@ -5,9 +5,14 @@ import { Link } from "react-router-dom"
 import ClipLoader from "react-spinners/ClipLoader";
 import './Home.css'
 
+import { useAppDispatch } from '../app/hooks';
+import { addFlash } from '../features/flash/flashSlice'
+
 const PER_PAGE = 6
 
 function Home() {  
+  const dispatch = useAppDispatch()
+
   const [page, setPage] = useState(0)
   const [cats, setCats] = useState([])
   const [catCount, setCatCount] = useState(0)
@@ -21,8 +26,9 @@ function Home() {
         setLoading(false)
         setCatCount(result.catCount)
         setCats(cats.concat(result.cats))
+        dispatch(addFlash({message: 'Cats loaded', className: 'info'}))
       })
-      .then((e) => {
+      .catch((e) => {
         // TODO: Handle error
         console.log(e)
       })

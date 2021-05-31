@@ -1,0 +1,17 @@
+.flash {
+  background: #ccc;
+  text-align: center;
+  padding: 1em 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.flash.info {
+  background: #cfc;
+}
+
+.flash.error {
+  background: #fcc;
+}

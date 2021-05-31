@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Flash from './components/Flash'
 
 import {
   BrowserRouter as Router,
@@ -14,6 +15,7 @@ import Upload from './pages/Upload';
 function App() {
   return (
     <Router>
+      <Flash />
     <div className="App">
 
 
