@@ -17,7 +17,7 @@ export const addFlash = createAsyncThunk(
     return new Promise<void>((resolve, reject) => {
       setTimeout(() => {
         resolve();
-      }, 3000);
+      }, 5000);
     });
   }
 );

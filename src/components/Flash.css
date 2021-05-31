@@ -2,10 +2,11 @@
   background: #ccc;
   text-align: center;
   padding: 1em 1em;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 99;
 }
 
 .flash.info {

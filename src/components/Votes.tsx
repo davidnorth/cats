@@ -1,20 +1,24 @@
 import React, {useState} from 'react'
 import ClipLoader from "react-spinners/ClipLoader";
 import {createVote} from '../lib/cat-api'
+import { addFlash } from '../features/flash/flashSlice'
+import { useAppDispatch } from '../app/hooks';
 
 interface CatProps {
   cat: Cat
 }
 
 function Votes({cat}:CatProps) {  
+  const dispatch = useAppDispatch()
+
   function vote(value: number) {
     createVote(cat.id, value)
       .then((v) => {
-        console.log('need to update vote count')
+        dispatch(addFlash({message: 'Thanks for your vote!', className: 'info'}))
         console.log(v)
       })
       .catch((e) => {
-        console.log(e)
+        dispatch(addFlash({message: 'Failed to save your vote. Please try later', className: 'error'}))
       })
   }
 

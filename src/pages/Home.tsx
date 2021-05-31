@@ -26,11 +26,10 @@ function Home() {
         setLoading(false)
         setCatCount(result.catCount)
         setCats(cats.concat(result.cats))
-        dispatch(addFlash({message: 'Cats loaded', className: 'info'}))
       })
       .catch((e) => {
-        // TODO: Handle error
-        console.log(e)
+        setLoading(false)
+        dispatch(addFlash({message: 'Failed to load cats. Please try later', className: 'error'}))
       })
   }, [page])
 
