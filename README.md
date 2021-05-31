@@ -1,44 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Running the app
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
+    `yarn start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
+## Implementation notes
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+My goal was to build the app following current best practices with React and Redux as much as possible in the time available.. For that reason I bootstrapped the app using Redux Toolkit though it would have been fun and a little quicker to build with no dependencies at all, or perhaps just Svelte.
 
-### `yarn build`
+## Improvements
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Automated testing
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+To test this app properly I would want a full integration test with a mocked version of the cats API. I would personally give that priority over unit tests in an app like this. I like Cypress for this purpose but last time I used it, file upload wasn't supported. Since there were a lot of features to implement and UI bits and pieces to pull together along with the complexities introduced by the API design I decided I'd have to leave this out. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Use of API
 
-### `yarn eject`
+The API made it necessary, at least as far as I could tell, to implement the vote and favourite feaatures in a sensible and production ready way. That data isn't included with the images. All vote and favourite records had to be fetched first so they could be matched the the corresponding images by image_id. To remove a favourite, you need the favourite_id, not image_id for the endpoint and the image record doesn't have that, and the API doesn't provide a more efficient way to get it. Also, my implementation neglects paginating the vote and favourite results.  Were this a production app, a discussion about a more practical and performant approach for fetching votes and favourites would be needed. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Typescript
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I decided to use Typescript for the first time here. I used Flow before which is similar but that was some time ago. I expect there'll be room for improvement here.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Components
 
-## Learn More
+There's potential here to extract some generic components, Favourites being one example. That said, making a component generic incurrs an overhead and I think its best to put it off until it becomes necessary. Its a different matter if you're building components for a UI library of some sort which reusability is the goal from the outset.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### CSS and UI
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+These are a bit rough and ready. It would have been easy to spend a another whole day or more making all of this properly refined. 
+
