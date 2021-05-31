@@ -21,6 +21,9 @@
   position: absolute;
 }
 
+.contentLoading {
+  text-align: center;
+}
 .contentLoading > span {
     margin: 4em 0;
 }

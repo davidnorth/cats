@@ -11,8 +11,10 @@ function Cat({cat}:CatProps) {
   return (
     <div className="cat">
       <img src={cat.url} alt="" />
-      <Favourite cat={cat} /> 
-      <Votes cat={cat} />
+      <div className="tools">
+        <Favourite cat={cat} /> 
+        <Votes cat={cat} />
+      </div>
     </div>
   );
 }

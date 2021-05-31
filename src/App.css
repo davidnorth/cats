@@ -2,7 +2,6 @@ body {
   background: url("bg.jpg") center/50%;
 }
 .App {
-  text-align: center;
   margin: 2em 2em;
   background: #eee;
 }
@@ -10,6 +9,7 @@ body {
 header {
   background: #fbc581;
   padding: 0.7em 0.5em;
+  text-align: center;
 }
 
 header h1 {

@@ -47,7 +47,7 @@ function Home() {
           ))}
         </div>
         <div className="contentLoading">
-          <ClipLoader loading={loading} size='75' />
+          <ClipLoader loading={loading} size={75} />
         </div>
         {!loading && moreToLoad ? <p><button onClick={loadMore}>Load more</button></p> : null}
     </div>

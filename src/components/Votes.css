@@ -1,0 +1,8 @@
+.votes svg {
+  cursor: pointer;
+  margin: 0 2px;
+}
+
+.voteCount {
+  margin-left: 5px;
+}

@@ -49,9 +49,9 @@ function Favourite({cat}:CatProps) {
   }
 
   return (
-    <span className="icon" onClick={toggleFavourite}>
+    <span className="favourite icon" onClick={toggleFavourite}>
+      <ClipLoader loading={loading} size={18} />
       { loading ? null : renderHeart(favourited) }
-      <ClipLoader color='white' loading={loading} size={150} />
     </span>
   );
 }
