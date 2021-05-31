@@ -26,9 +26,8 @@ const BASE_URL = 'https://api.thecatapi.com/v1'
 // If we're happy that the list of cats is user specific, then the API might include the favourite 
 // state (and votes) along with the images response. This endpoint has the option 'include_favourite' 
 // and 'include_vote' but their purpose is undocumented and they don't alter the response in any way.
-async function getCats () {
-
-  const favs = await  superagent
+async function getCats (limit:number = 100, page:number = 0) {
+  const favs = await superagent
     .get(BASE_URL + '/favourites')
     .set('X-API-Key', process.env.REACT_APP_API_KEY)
     .then((r) => r.body.map((f:Favourite) => ({id: f.id, image_id: f.image_id})))
@@ -38,26 +37,22 @@ async function getCats () {
     .set('X-API-Key', process.env.REACT_APP_API_KEY)
     .then((r) => r.body)
 
-  const tallyVotes = (cat: Cat) => {
-    return votes
-      .filter((v: Vote) => v.image_id === cat.id)
-      .reduce((voteCount:number, v:Vote) => voteCount += v.value === 1 ? 1 : -1, 0) // 0 is a downvote
-  }
-
-  console.log('votes')
-  console.log(votes)
+  const tallyVotes = (cat: Cat) => votes
+    .filter((v: Vote) => v.image_id === cat.id)
+    .reduce((voteCount:number, v:Vote) => voteCount += v.value === 1 ? 1 : -1, 0) // 0 is a downvote
 
   return superagent
     .get(BASE_URL + '/images')
-    .query({limit: 100, include_vote: 1, include_favourite: 1})
+    .query({limit, page})
     .set('X-API-Key', process.env.REACT_APP_API_KEY)      
     .then((res) => {
-      return res.body.map((cat: Cat) => 
+      const cats = res.body.map((cat: Cat) => 
         // Assign the matching favourite object to the cat for use in the heart widget.  Also assign vote count.
         // We need the favourite id so we can un-favourite. It isn't enough to just know that the image was favourited        
         Object.assign(cat, {favourite: favs.find((f:Favourite) => f.image_id === cat.id),  vote_count: tallyVotes(cat)}
         )
-      ) 
+      )
+      return {cats, catCount: +res.header['pagination-count']}
     })
 
 }
