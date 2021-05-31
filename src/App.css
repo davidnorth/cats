@@ -2,13 +2,13 @@ body {
   background: url("bg.jpg") center/50%;
 }
 .App {
-  margin: 2em 2em;
+  margin: 1em 2em;
   background: #eee;
 }
 
 header {
   background: #fbc581;
-  padding: 0.7em 0.5em;
+  padding: 20px 10px 15px 10px;
   text-align: center;
 }
 
@@ -30,4 +30,23 @@ section {
   .App {
     margin: 0;
   }
+  header {
+    padding: 7px 4px 2px 4px;
+  }
+}
+
+button {
+  background: #eea562;
+  border: 0;
+  color: #fff;
+  font-weight: bold;
+  padding: 0.5em 0.5em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background: #f19e50;
+}
+button:disabled {
+  background: #ccc;
 }

@@ -39,7 +39,7 @@ function Home() {
 
   return (
     <div>
-        <Link to="/upload">Upload a cat</Link>
+        <p><Link to="/upload"><button>Upload a cat</button></Link></p>
         {!loading && !cats.length ? <p>No cats have been uploaded yet.</p> : null}
         <div className="grid">
           {cats.map((cat:Cat) => (
@@ -49,7 +49,7 @@ function Home() {
         <div className="contentLoading">
           <ClipLoader loading={loading} size={75} />
         </div>
-        {!loading && moreToLoad ? <p><button onClick={loadMore}>Load more</button></p> : null}
+        {!loading && moreToLoad ? <p className="loadMore"><button onClick={loadMore}>Load more</button></p> : null}
     </div>
   );
 }

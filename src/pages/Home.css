@@ -27,3 +27,7 @@
 .contentLoading > span {
     margin: 4em 0;
 }
+
+.loadMore {
+  text-align: center;
+}
