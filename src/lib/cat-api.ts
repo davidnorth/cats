@@ -27,6 +27,7 @@ const BASE_URL = 'https://api.thecatapi.com/v1'
 // state (and votes) along with the images response. This endpoint has the option 'include_favourite' 
 // and 'include_vote' but their purpose is undocumented and they don't alter the response in any way.
 async function getCats (limit:number = 100, page:number = 0) {
+  // Could easily have just used fetch. Superagent was the standard where I last worked and is just a little nicer
   const favs = await superagent
     .get(BASE_URL + '/favourites')
     .set('X-API-Key', process.env.REACT_APP_API_KEY)

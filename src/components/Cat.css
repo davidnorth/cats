@@ -15,7 +15,6 @@
   bottom: 0;
 }
 
-/* TODO: Should move to Favourite component */
 .cat .favourite {
   display: block;
   position: absolute;

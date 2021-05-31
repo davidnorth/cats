@@ -21,7 +21,6 @@ function Favourite({cat}:CatProps) {
 
   function toggleFavourite(e:React.SyntheticEvent) {
     e.preventDefault()
-    // TODO: error handling
     setLoading(true)
     if(favourited) {
       removeFavourite(favouriteId)

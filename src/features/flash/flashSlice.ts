@@ -33,7 +33,6 @@ export const flashSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(addFlash.pending, (state, action) => {
-        console.log(action.meta.arg)
         state.message = action.meta.arg.message
         state.className = action.meta.arg.className
       })
