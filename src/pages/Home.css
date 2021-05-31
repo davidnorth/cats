@@ -20,3 +20,7 @@
 .grid > div > img {
   position: absolute;
 }
+
+.contentLoading > span {
+    margin: 4em 0;
+}
