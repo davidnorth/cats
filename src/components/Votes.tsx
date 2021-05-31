@@ -10,12 +10,13 @@ interface CatProps {
 
 function Votes({cat}:CatProps) {  
   const dispatch = useAppDispatch()
+  const [voteCount, setVoteCount] = useState(cat.vote_count)
 
   function vote(value: number) {
     createVote(cat.id, value)
       .then((v) => {
         dispatch(addFlash({message: 'Thanks for your vote!', className: 'info'}))
-        console.log(v)
+        setVoteCount(voteCount + value*2-1) // 1 or 0 into 1 or -1
       })
       .catch((e) => {
         dispatch(addFlash({message: 'Failed to save your vote. Please try later', className: 'error'}))
@@ -32,7 +33,7 @@ function Votes({cat}:CatProps) {
 
   return (
     <div className='votes'>
-      {cat.vote_count} {cat.vote_count === 1 ? 'vote' : 'votes'}
+      {voteCount} {voteCount === 1 ? 'vote' : 'votes'}
       <button onClick={voteUp}>Vote up</button>
       <button onClick={voteDown}>Vote down</button>
     </div>
