@@ -1,5 +1,11 @@
 ## Running the app
 
+Create `.env` in the root and add your thecatapi key.
+
+    `REACT_APP_API_KEY=your_key`
+
+Then:
+
     `yarn start`
 
 Runs the app in the development mode.<br />
