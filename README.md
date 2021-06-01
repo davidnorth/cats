@@ -24,7 +24,7 @@ To test this app properly I would want a full integration test with a mocked ver
 
 ### Use of API
 
-The API made it necessary, at least as far as I could tell, to implement the vote and favourite feaatures in a sensible and production ready way. That data isn't included with the images. All vote and favourite records had to be fetched first so they could be matched the the corresponding images by image_id. To remove a favourite, you need the favourite_id, not image_id for the endpoint and the image record doesn't have that, and the API doesn't provide a more efficient way to get it. Also, my implementation neglects paginating the vote and favourite results.  Were this a production app, a discussion about a more practical and performant approach for fetching votes and favourites would be needed. 
+The API made it impractical to implement the vote and favourite feaatures in a sensible and production ready way. That data isn't included with the images. All vote and favourite records had to be fetched first so they could be matched the the corresponding images by image_id. To remove a favourite, you need the favourite_id, not image_id for the endpoint and the image record doesn't have that, and the API doesn't provide a more efficient way to get it. Were this a production app, a discussion about a more practical and performant approach for fetching votes and favourites would be needed. 
 
 
 ### Typescript
@@ -37,5 +37,5 @@ There's potential here to extract some generic components, Favourites being one 
 
 ### CSS and UI
 
-These are a bit rough and ready. It would have been easy to spend a another whole day or more making all of this properly refined. 
+These are a bit rough and ready. It would have been easy to spend a another whole day or more making all of this more refined. 
 
